@@ -1,0 +1,10 @@
+#!/bin/bash -l
+#SBATCH --job-name task          # this will be shown in the queueing system
+#SBATCH --output "dt2.out"   # stdout redirection
+#SBATCH --error "dt2.err"    # stderr redirection
+#SBATCH --account "g89-1244"          # the number of our grant
+#SBATCH --nodes 4                  # how many nodes we want
+#SBATCH --tasks-per-node 24           # each node is 2 socket, 12 core, so we want 24 tasks on each node
+#SBATCH --time 00:15:00               # if the job runs longer than this, it'll be killed
+
+srun genome_index 4 80 /lustre/tetyda/home/adinar/public_html/perf_test/genome /lustre/tetyda/home/adinar/public_html/perf_test/queries out_duzy_test
